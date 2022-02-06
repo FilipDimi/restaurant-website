@@ -1,0 +1,98 @@
+/* GLOBAL USE */
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+.baseBackgroundColor {
+  background-color: #393534;
+}
+
+.secondaryBackgroundColor {
+  background-color: #ece9e3;
+  overflow: hidden;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.navBarFont {
+  font-size: 1.5rem;
+}
+
+.myFontColor {
+  color: #393534;
+}
+
+.myFontColor:hover {
+  color: #dd7e62;
+}
+
+/* HOME USE */
+.bookmark-style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -10px;
+  width: 250px;
+}
+
+.strip-style {
+  width: 200px;
+  float: right;
+  margin-right: -20px;
+  margin-top: -10px;
+}
+
+.double-border {
+  border-right-style: double;
+  border-right-color: #b0cbbf;
+  border-right-width: 9px;
+  text-align: left;
+}
+
+@media screen and (min-width: 500px) {
+  .temp-border {
+    border-right-style: double;
+    border-right-color: #b0cbbf;
+    border-right-width: 9px;
+    text-align: left;
+  }
+}
+
+.space-between-lines {
+  line-height: 2;
+}
+
+.bold-text {
+  font-family: "Shrikhand", cursive;
+  color: #dd7e62;
+}
+
+.capital-letter {
+  font-family: "Shrikhand", cursive;
+  color: #dd7e62;
+  font-size: 2rem;
+}
+/* MENU USE */
+
+.ingredients {
+  margin-top: -20px;
+  font-size: 0.7rem;
+}
+
+.ingredient-container {
+  margin-bottom: 10px;
+}
+
+.sub-category {
+  font-size: 0.85rem;
+}
+
+.suprise-font {
+  font-size: 3rem;
+}
+
+.logo-opacity:hover {
+  opacity: 0.8;
+}

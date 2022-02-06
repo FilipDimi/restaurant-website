@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container secondaryBackgroundColor rounded-top" style="font-family: 'Open Sans', sans-serif;">
+  <div class="row">
+    <div class="col-8">
+      <img src="{% static 'images/bookmark.png' %}" class="bookmark-style" />
+    </div>
+    <div class="col-4">
+      <img src="{% static 'images/strip.png' %}" class=" justify-content-end strip-style" />
+    </div>
+  </div>
+  <hr style="border-width: 3px; background-color: #B0CBBF;" />
+  <hr style="border-width: 3px; background-color: #B0CBBF; margin-top: -12px" />
+
+  <div class="row">
+    <div class="col-4 double-border">
+      <h1>SINCE <span class="bold-text">1992</span></h1>
+    </div>
+    <div class="col-8">
+      <h1>
+        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="#DD7E62"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+        </svg>
+        <span class="bold-text">3 9 0 0</span> ROCHESTER RD
+      </h1>
+    </div>
+  </div>
+  <hr style="border-width: 3px; background-color: #B0CBBF;" />
+  <hr style="border-width: 3px; background-color: #B0CBBF; margin-top: -12px" />
+  <div class="row">
+    <div class="col-12" style="text-align: center; font-style: italic;">
+      <h1>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-asterisk" fill="#DD7E62"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z" />
+        </svg>
+        TROY, MICHIGAN
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-asterisk" fill="#DD7E62"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z" />
+        </svg>
+      </h1>
+    </div>
+  </div>
+  <hr style="border-width: 3px; background-color: #B0CBBF;" />
+  <hr style="border-width: 3px; background-color: #B0CBBF; margin-top: -12px" />
+
+  <div class="row space-between-lines" style="padding: 5px">
+    <div class="col-sm text-justify temp-border">
+      <span class="capital-letter">At</span> Lukich Family Restaurant, we specialize in providing a remarkable dining
+      experience with exceptional quality
+      food and service. Since 1992, our knowledge of the dining experience has taken us from "new restaurant
+    </div>
+    <div class="col-sm text-justify pt-3">
+      in town" to one of Troy's most popular breakfast, lunch, dinner, carry-out and party catering restaurants in Metro
+      Detroit. We pride ourselves in our home-cooked Polish-American Food and we specialize in total customer
+      satisfaction!
+    </div>
+  </div>
+
+  <hr style="border-width: 3px;">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/home1.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/home2.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/home3.png' %}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <p>&nbsp;</p>
+</div>
+{% endblock %}

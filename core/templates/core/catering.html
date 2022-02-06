@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+      <div class="container secondaryBackgroundColor rounded-top"
+  style="padding: 50px">
+<div class="row mt-3 mb-5" style="overflow: hidden;">
+    <div class="col-sm-8">
+        <h1 class="display-3" style="color: #DD7E62;">Catering</h1>
+        <p class="lead myFontColor text-justify">With Lukich catering packages, we offer a variety of menu options to customize any event with your own personal selections. Just set up an appointment to help plan your event, and leave the rest to us.</p>
+        <p class="lead myFontColor text-justify">Our beautiful Banquet Room seats up to 50 people and is available for your next party. Let us help design your banquet in our room or yours.</p>
+        <p>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="#DD7E62" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z"/>
+</svg> (248) 528-9955
+        </p>
+        <p>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="#DD7E62" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg> 3900 Rochester Road, Troy, Michigan
+        </p>
+    </div>
+    <div class="col-sm-4">
+        <img src="{% static 'images/recipe-book.png' %}" alt="Cooking" width="80%"/>
+    </div>
+</div>
+      <div class="row mb-5">
+          <h1 class="bold-text" style="color: #393534;">Your personal selections in groups of 20 or more</h1>
+      </div>
+      <div class="row">
+          <div class="col-sm">
+                <h2 class="bold-text">Catering Menu</h2>
+              <ul>
+                  {% for meal in catering_all %}
+                <li class="mb-3" style="font-size: 1.2rem;">{{ meal.name }}</li>
+                  {% endfor %}
+            </ul>
+          </div>
+            <div class="col-sm ">`
+                <h2 class="bold-text ">Plus <span class="bold-text" style="font-size: 1.4rem;">(Your choice of 3 sides):</span> </h2>
+                <ul>
+                  {% for meal in sides_all %}
+                <li class="mb-3" style="font-size: 1.2rem;">{{ meal.name }}</li>
+                  {% endfor %}
+            </ul>
+                <h2 class="bold-text mt-5">For Additional Charge: </h2>
+                <ul>
+                  {% for meal in additional_all %}
+                <li class="mb-3" style="font-size: 1.2rem;">{{ meal.name }}</li>
+                  {% endfor %}
+            </ul>
+            </div>
+      </div>
+      <div class="row mt-4">
+          <div class="col-12">
+              <h2 class="bold-text" style="color: #393534;">Vegetarian menu also available</h2>
+              <p class="mb-1 font-italic" style="font-size: 1.2rem;">Delivery and gratuity not included in the above prices</p>
+              <p class="mb-1 font-italic" style="font-size: 1.2rem;">Ask for pricing on groups for less than 20</p>
+              <p class="font-italic" style="font-size: 1.2rem;">Prices subject to change</p>
+          </div>
+      </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,192 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+<div class="container secondaryBackgroundColor rounded-top" style="">
+  <div class="jumbotron secondaryBackgroundColor">
+    <div class="row" style="overflow: hidden;">
+      <div class="col-sm-8">
+        <h1 class="display-3" style="color: #DD7E62;">Menu</h1>
+        <p class="lead myFontColor text-justify">
+          Our dedication to great food and impeccable customer service is testimony to our professionalism both in our
+          family dining
+          restaurant and our superior food catering services. We listen to our customers and continually improve and
+          expand our menu
+          with new recipes and food choices while always serving only the freshest ingredients in every dish we prepare.
+          We make sure there is something on the menu for everyone's tastes.
+        </p>
+      </div>
+      <div class="col-sm-4">
+        <img src="{% static 'images/cutlery.png' %}" alt="Cooking" width="80%" />
+      </div>
+    </div>
+
+    <hr style="border-width: 3px; background-color: #B0CBBF;" />
+    <hr style="border-width: 3px; background-color: #B0CBBF; margin-top: -12px" />
+    <div class="row mb-3">
+      <div class="col-12">
+        <div class="alert alert-light" role="alert">
+          <a class="btn btn-light" style="background-color: #DD7E62; color: #fff;" href="{% url 'menu' %}">Surprise
+            Me</a>
+          Today we recommend {{ surprise_meal.meal.name }} with a side of {{ surprise_side.name }}!
+        </div>
+      </div>
+    </div>
+
+    <div class="rounded-lg" style="max-width: 650px; margin: auto;">
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left myFontColor text-decoration-none bold-text" type="button"
+                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Today's Specials
+              </button>
+            </h2>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              {% for special in specials %}
+              {% if special.is_today_special %}
+              <div class="ingredient-container border-bottom">
+                <p>
+                  <span class="font-weight-bold">{{ special.meal.name }}</span>&nbsp;<span
+                    class="font-italic">{{ special.meal.get_price }}</span>
+                  {% if special.meal.second_price > -1 %}&nbsp;<span class="font-italic">{{ special.meal.get_second_price }}</span>{% endif %}
+                </p>
+                {% if special.meal.check_for_ingredients_not_empty %}
+                <p class="ingredients">
+                  <span class="font-italic">{{ special.meal.get_ingredients }}</span>
+                </p>
+                {% endif %}
+              </div>
+              {% if forloop.last %}
+              <p class="font-weight-bold">
+                Sides
+              </p>
+              {% for side in sides_specials %}
+              {% if side.meal_category != "Catering" %}
+              <p class="ingredients">{{ side.name }}</p>
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+              {% endif %}
+              {% endfor %}
+              <div class="row">
+                  <div class="col-6">
+                      <span class="font-weight-bold bold-text">Today's Soups</span>
+                      <ul>
+                          {% for soup in soups %}
+                          <li>{{ soup }}</li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+                  <div class="col-6">
+                      <span class="font-weight-bold bold-text">Today's Desserts</span>
+                      <ul>
+                          {% for dessert in desserts %}
+                          <li>{{ dessert }}</li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% for meals_category in meals_categories %}
+        {% if meals_category.name != "Specials" and meals_category.name != "Catering" and meals_category.name != "Additional_Catering" and meals_category.name != "Dessert" and meals_category.name != "Dessert (Varies by Day)" %}
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed myFontColor text-decoration-none" type="button"
+                data-toggle="collapse" data-target="#{{ meals_category.generate_html_id }}" aria-expanded="false"
+                aria-controls="{{ meals_category.generate_html_id }}">
+                {{ meals_category.name }}
+              </button>
+            </h2>
+          </div>
+          <div id="{{ meals_category.generate_html_id }}" class="collapse" aria-labelledby="headingTwo"
+            data-parent="#accordionExample">
+            <div class="card-body">
+              {% for meal in meals_all %}
+              {% if meal.meal_category.name == meals_category.name %}
+              <div class="ingredient-container border-bottom">
+                <p>
+                  <span class="font-weight-bold">{{ meal.name }}</span>{% if meal.price > -1 %}&nbsp;<span class="font-italic">{{ meal.get_price }}</span>{% endif %}
+                  {% if meal.second_price > -1 %}&nbsp;<span class="font-italic">{{ meal.get_second_price }}</span>{% endif %}
+                </p>
+                {% if meal.check_for_ingredients_not_empty %}
+                <p class="ingredients">
+                  <span class="font-italic">{{ meal.get_ingredients }}</span>
+                </p>
+                {% endif %}
+              </div>
+              {% endif %} {% endfor %}
+              <div>
+              {% if meals_category.name != "Breakfast Sides" and meals_category.name != "Appetizers" and meals_category.name != "Dessert" %}
+                <p class="font-weight-bold">
+                  Sides
+                </p>
+                {% for side in sides_all %}
+                {% if side.meal_category.name == meals_category.name %}
+                <p class="ingredients">{{ side.name }}</p>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% if meals_category.name == "Garden Fresh Salad" %}
+                    <p class="font-weight-bold border-top">
+                  Salad Dressings
+                </p>
+                    <p class="ingredients">Ranch, Italian, Thousands Island, Honey Mustard, Greek, Fat Frees Raspberry Vinaigrette</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed myFontColor text-decoration-none" type="button"
+                data-toggle="collapse" data-target="#beverage_id" aria-expanded="false" aria-controls="beverage_id">
+                Beverages
+              </button>
+            </h2>
+          </div>
+          <div id="beverage_id" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              <!-- {% for beverage in beverages_all %}
+              {% if beverage.beverage_category.price == -1 %}
+              <p>
+                <span class="font-weight-bold">{{ beverage.name }}</span>&nbsp;<span
+                  class="font-italic">{{ beverage.get_price }}</span>
+              </p>
+              {% endif %}
+            {% endfor %} -->
+
+              {% for bev_category in beverage_categories %}
+              <p>
+                <span class="font-weight-bold">{{ bev_category.name }}</span>&nbsp;
+                {% if bev_category.price != -1 %}
+                <span class="font-italic">{{ bev_category.get_price }}</span>
+                {% endif %}
+              </p>
+              {% for beverage in beverages_all %}
+              {% if beverage.beverage_category == bev_category %}
+              <div class="ingredient-container">
+                <p class="ingredients">
+                  <span>{{ beverage.name }}</span>&nbsp;<span class="font-italic">{{ beverage.get_price }}</span>
+                </p>
+              </div>
+              {% endif %}
+              {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
